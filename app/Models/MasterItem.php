@@ -10,4 +10,11 @@ class MasterItem extends Model
 {
     use HasFactory;
     use SoftDeletes;
+
+    protected $guarded = [];
+
+    public function categories()
+    {
+        return $this->belongsToMany(Category::class, 'category_items', 'master_item_id', 'category_id')->withTimestamps();
+    }
 }
